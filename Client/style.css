@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: rgb(108, 84, 139);
+}
+
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
