@@ -1,6 +1,7 @@
 const url = "http://localhost:3000/practitioners"
 let main = document.querySelector("#main")
 
+
 document.addEventListener("DOMContentLoaded", ()=> {
     getPract()
  })
@@ -50,6 +51,10 @@ function renderP(practitioner){
         decrementThumbs(event, thumbsDown)
     })
 
+    name.addEventListener("click", ()=> {
+        showPract(event, practitioner)
+    })
+
 
     upLikes.append(thumbsUp)
     downLikes.appendChild(thumbsDown)
@@ -58,6 +63,8 @@ function renderP(practitioner){
     imgDiv.append(image)
     card.append(content, imgDiv, likesDiv)
     main.appendChild(card)
+
+    
 }
 
 function incrementThumbs(event, thumbsUp) {
@@ -70,4 +77,61 @@ function decrementThumbs(event, thumbsDown) {
     thumbsDown.textContent = minus
     
 }
+
+function showPract(event, practitioner){
+    main.innerHTML = ""
+
+    let card = document.createElement('div')
+    card.className = "ui centered card"
+
+    let name = document.createElement('div')
+    name.className = "centered"
+    name.innerText = practitioner.name
+
+    let img = document.createElement('img')
+    img.src = practitioner.image
+
+    let likesDiv = document.createElement('div')
+    likesDiv.className = "content"
+    let upLikes = document.createElement('span')
+    upLikes.className = "right floated"
+    let heart = document.createElement('i')
+    heart.className = "heart outline like icon"
+    heart.textContent = "0 likes"
+    let comments = document.createElement('i')
+    comments.className = "comment icon"
+    comments.innerText = "0 comments"
+    let commentsFrom = document.createElement('div')
+    commentsFrom.className = "extra content"
+    let placeHolder = document.createElement('div')
+    placeHolder.className = "ui large transparent left icon input"
+    let inputForm = document.createElement('input')
+    inputForm.type ="text"
+    inputForm.placeholder= "Add Comment..."
+
+    let segment = document.createElement('div')
+    segment.className = "ui raised segment"
+    let about = document.createElement('p')
+    about.innerText = practitioner.about
+    let specialtiesTitle = document.createElement('ul')
+    specialtiesTitle.innerText = 'Specialties:'
+    let specialties = document.createElement('li')
+    practitioner.specialties.forEach(specialty => {
+        specialties.innerHTML += `<li>${specialty}</li>`})
+    let languages = document.createElement('p')
+    languages.innerText = `Languages Spoken: ${practitioner.languages}`
+    let zipCode = document.createElement('p')
+    zipCode.innerText = `Zip Code: ${practitioner.zip_code}`
+    
+    placeHolder.append(inputForm)
+    commentsFrom.append(placeHolder)
+    upLikes.append(heart)
+    likesDiv.append(upLikes, comments)
+    specialtiesTitle.append(specialties)
+    segment.append(about, specialtiesTitle, languages, zipCode)
+    card.append(name, img, likesDiv, commentsFrom)
+    main.append(card, segment)
+
+}
+
 
