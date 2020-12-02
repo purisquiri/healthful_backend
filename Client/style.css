@@ -13,4 +13,12 @@ main {
     grid-gap: 20px;
     padding-top: 10px;
     padding-bottom: 30px;
+    padding-left: 50px;
+  }
+
+  .title{
+      font-size: 45px;
+      text-align: center;
+      font-family: 'Sansita Swashed', cursive;
+      
   }
