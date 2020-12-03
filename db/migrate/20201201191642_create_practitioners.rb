@@ -7,6 +7,8 @@ class CreatePractitioners < ActiveRecord::Migration[6.0]
       t.integer :zip_code
       t.text :languages
       t.string :image
+      t.text :reviews
+      t.integer :likes
 
       t.timestamps
     end
