@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2020_12_01_191713) do
     t.integer "zip_code"
     t.text "languages"
     t.string "image"
+    t.text "reviews"
+    t.integer "likes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
